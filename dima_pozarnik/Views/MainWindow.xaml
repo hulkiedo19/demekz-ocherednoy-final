@@ -1,0 +1,90 @@
+﻿<Window x:Class="dima_pozarnik.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dima_pozarnik.Views"
+        xmlns:vm="clr-namespace:dima_pozarnik.ViewModels"
+        mc:Ignorable="d"
+        Title="Дима потуши свой пыл" 
+        Height="450"
+        Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        <TabControl>
+            <TabItem Header="Сотрудники димы">
+                <ListView 
+                    ItemsSource="{Binding Departments}"
+                    HorizontalContentAlignment="Stretch"
+                    ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                BorderBrush="Black"
+                                BorderThickness="1"
+                                Height="100">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock 
+                                        Grid.Column="0"
+                                        FontSize="20"
+                                        Text="{Binding Id}"/>
+                                    <TextBlock 
+                                        FontSize="20"
+                                        Grid.Column="1"
+                                        Text="{Binding EmployeeCount}"/>
+                                    <TextBlock 
+                                        FontSize="20"
+                                        Grid.Column="2"
+                                        Text="{Binding DepartmentName}"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Материалы в диме">
+                <ListView
+                    ItemsSource="{Binding Equipment}"
+                    HorizontalContentAlignment="Stretch"
+                    ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                BorderBrush="Black"
+                                BorderThickness="1"
+                                Height="100">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="200"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock 
+                                        Grid.Column="0"
+                                        FontSize="20"
+                                        Text="{Binding Id}"/>
+                                    <TextBlock 
+                                        FontSize="20"
+                                        Grid.Column="1"
+                                        Text="{Binding EquipmentCount}"/>
+                                    <TextBlock 
+                                        FontSize="20"
+                                        Grid.Column="2"
+                                        Text="{Binding EquipmentType}"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
