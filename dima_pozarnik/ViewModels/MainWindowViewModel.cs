@@ -1,4 +1,5 @@
 ﻿using dima_pozarnik.Models;
+using dima_pozarnik.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,12 @@ namespace dima_pozarnik.ViewModels
         {
             Departments = new ApplicationDbContext().Departments.ToList();
             Equipment = new ApplicationDbContext().Equipment.ToList();
+        }
+
+        public void OpenSecondWindow()
+        {
+            SecondWindow window = new SecondWindow();
+            window.ShowDialog();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dima_pozarnik.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace dima_pozarnik.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel? _viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+            _viewModel = (MainWindowViewModel)DataContext;
+        }
+
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (_viewModel != null)
+                _viewModel.OpenSecondWindow();
         }
     }
 }
